@@ -14,6 +14,7 @@ interface Props {
 
 export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: Props) {
   const [error, setError] = useState('');
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
 
   const handleSubmit = () => {
     if (!data.frameStyle) {
@@ -21,6 +22,10 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
       return;
     }
     onNext();
+  };
+
+  const handleImageError = (frameId: number) => {
+    setImageErrors(prev => ({ ...prev, [frameId]: true }));
   };
 
   return (
@@ -43,10 +48,23 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
                 : 'border-gray-200 hover:border-wayuu-orange/50'
             }`}
           >
-            <div className="relative h-48 bg-gradient-to-br from-wayuu-sand to-orange-50 flex items-center justify-center">
-              <span className="text-wayuu-brown/50 text-sm">
-                Imagen de ejemplo {frame.id}
-              </span>
+            <div className="relative h-48 bg-gradient-to-br from-wayuu-sand to-orange-50">
+              {!imageErrors[frame.id] ? (
+                <Image
+                  src={frame.image}
+                  alt={frame.name}
+                  fill
+                  className="object-contain p-2"
+                  onError={() => handleImageError(frame.id)}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <span className="text-wayuu-brown/50 text-sm text-center px-4">
+                    Imagen de ejemplo {frame.id}
+                  </span>
+                </div>
+              )}
             </div>
             <div className="p-3 bg-white">
               <p className="font-semibold text-center text-wayuu-brown">{frame.name}</p>

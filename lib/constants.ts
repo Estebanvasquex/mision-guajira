@@ -1,9 +1,9 @@
 export const FRAME_STYLES = [
-  { id: 1, name: 'Estilo Clásico', image: '/frames/frame1.jpg' },
-  { id: 2, name: 'Estilo Moderno', image: '/frames/frame2.jpg' },
-  { id: 3, name: 'Estilo Rústico', image: '/frames/frame3.jpg' },
-  { id: 4, name: 'Estilo Minimalista', image: '/frames/frame4.jpg' },
-  { id: 5, name: 'Estilo Elegante', image: '/frames/frame5.jpg' },
+  { id: 1, name: 'Estilo Poder', image: '/frames/frame1.jpeg' },
+  { id: 2, name: 'Estilo Hijo', image: '/frames/frame2.jpeg' },
+  { id: 3, name: 'Estilo Seguridad', image: '/frames/frame3.jpeg' },
+  { id: 4, name: 'Estilo Sanidad', image: '/frames/frame4.jpeg' },
+  { id: 5, name: 'Estilo Mascota', image: '/frames/frame5.jpeg' },
 ];
 
 export const COLOR_PALETTE = [
