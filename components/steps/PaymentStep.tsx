@@ -33,13 +33,65 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
+      // Validar tamaño
       if (selectedFile.size > 5 * 1024 * 1024) {
         setError('El archivo no puede superar los 5MB');
         return;
       }
+      
+      // Validar tipo
+      if (!selectedFile.type.startsWith('image/') && selectedFile.type !== 'application/pdf') {
+        setError('Solo se permiten imágenes o PDF');
+        return;
+      }
+      
       setFile(selectedFile);
       setError('');
     }
+  };
+
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          
+          // Redimensionar si es muy grande
+          const MAX_WIDTH = 1200;
+          const MAX_HEIGHT = 1200;
+          
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          
+          // Comprimir a JPEG con calidad 0.7
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+          resolve(compressedBase64);
+        };
+        img.onerror = reject;
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   };
 
   const handleSubmit = async () => {
@@ -52,26 +104,35 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
     setError('');
 
     try {
-      // Convertir archivo a base64 para enviar
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const base64 = reader.result as string;
-        
-        const response = await fetch('/api/orders', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...data,
-            paymentProof: base64,
-          }),
+      let fileData: string;
+      
+      // Si es PDF, convertir directamente
+      if (file.type === 'application/pdf') {
+        const reader = new FileReader();
+        fileData = await new Promise((resolve, reject) => {
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
         });
+      } else {
+        // Si es imagen, comprimir primero
+        fileData = await compressImage(file);
+      }
+      
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          paymentProof: fileData,
+        }),
+      });
 
-        if (!response.ok) throw new Error('Error al enviar el pedido');
+      if (!response.ok) throw new Error('Error al enviar el pedido');
 
-        setSuccess(true);
-      };
-      reader.readAsDataURL(file);
+      setSuccess(true);
     } catch (err) {
+      console.error('Error:', err);
       setError('Error al enviar el pedido. Intenta nuevamente.');
       setLoading(false);
     }
@@ -160,6 +221,7 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
           <input
             type="file"
             accept="image/*,.pdf"
+            capture="environment"
             onChange={handleFileChange}
             className="hidden"
             id="payment-proof"
@@ -169,11 +231,16 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
             <p className="text-sm text-wayuu-brown font-medium">
-              {file ? file.name : 'Haz clic para seleccionar un archivo'}
+              {file ? file.name : 'Toca para tomar foto o seleccionar archivo'}
             </p>
             <p className="text-xs text-wayuu-brown/60 mt-1">
-              PNG, JPG o PDF (máx. 5MB)
+              Foto o PDF (máx. 5MB)
             </p>
+            {file && (
+              <p className="text-xs text-wayuu-green mt-2 font-medium">
+                ✓ Archivo seleccionado
+              </p>
+            )}
           </label>
         </div>
       </div>
