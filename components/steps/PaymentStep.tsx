@@ -80,15 +80,15 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
   if (success) {
     return (
       <div className="text-center space-y-6 py-8">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-          <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        <div className="w-20 h-20 bg-gradient-to-br from-wayuu-green to-wayuu-blue rounded-full flex items-center justify-center mx-auto shadow-lg">
+          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-green to-wayuu-blue bg-clip-text text-transparent">
           ¡Pedido Recibido!
         </h2>
-        <p className="text-gray-600">
+        <p className="text-wayuu-brown">
           Gracias por apoyar nuestra misión. Te contactaremos pronto para confirmar tu pedido.
         </p>
         <button
@@ -103,51 +103,51 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-4">
         Comprobante de Pago
       </h2>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-semibold text-blue-900 mb-2">
+      <div className="bg-[#fff7ed] border-2 border-wayuu-blue rounded-lg p-4">
+        <h3 className="font-semibold text-wayuu-brown mb-2">
           Información de Pago
         </h3>
-        <p className="text-sm text-blue-800 mb-2">
+        <p className="text-sm text-wayuu-brown/80 mb-2">
           Realiza tu transferencia a:
         </p>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>Banco: Bancolombia</li>
-          <li>Cuenta: 00861713547</li>
-          <li>Titular: Vanessa Henao Zuluaga</li>
+        <ul className="text-sm text-wayuu-brown space-y-1">
+          <li><span className="font-medium">Banco:</span> Bancolombia</li>
+          <li><span className="font-medium">Cuenta:</span> 00861713547</li>
+          <li><span className="font-medium">Titular:</span> Vanessa Henao Zuluaga</li>
         </ul>
       </div>
 
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-        <h3 className="font-semibold text-gray-900 mb-3">Resumen del Pedido</h3>
+      <div className="bg-[#fff7ed] border-2 border-wayuu-orange rounded-lg p-4">
+        <h3 className="font-semibold text-wayuu-brown mb-3">Resumen del Pedido</h3>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span className="text-gray-600">Cuadro personalizado</span>
-            <span className="text-gray-900 font-medium">{formatPrice(20000)}</span>
+            <span className="text-wayuu-brown/80">Cuadro personalizado</span>
+            <span className="text-wayuu-brown font-medium">{formatPrice(20000)}</span>
           </div>
           {data.deliveryMethod === 'delivery' && (
             <div className="flex justify-between">
-              <span className="text-gray-600">Envío a domicilio</span>
-              <span className="text-gray-900 font-medium">{formatPrice(10000)}</span>
+              <span className="text-wayuu-brown/80">Envío a domicilio</span>
+              <span className="text-wayuu-brown font-medium">{formatPrice(10000)}</span>
             </div>
           )}
-          <div className="border-t border-gray-300 pt-2 mt-2">
+          <div className="border-t-2 border-wayuu-orange/30 pt-2 mt-2">
             <div className="flex justify-between">
-              <span className="text-gray-900 font-bold">Total a pagar</span>
-              <span className="text-blue-600 font-bold text-lg">{formatPrice(total)}</span>
+              <span className="text-wayuu-brown font-bold">Total a pagar</span>
+              <span className="text-wayuu-orange font-bold text-lg">{formatPrice(total)}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-wayuu-brown mb-2">
           Adjuntar comprobante de pago *
         </label>
-        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+        <div className="border-2 border-dashed border-wayuu-orange/50 rounded-lg p-6 text-center hover:border-wayuu-orange hover:bg-wayuu-sand/30 transition-colors">
           <input
             type="file"
             accept="image/*,.pdf"
@@ -156,20 +156,20 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
             id="payment-proof"
           />
           <label htmlFor="payment-proof" className="cursor-pointer">
-            <svg className="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-12 h-12 text-wayuu-orange mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-wayuu-brown font-medium">
               {file ? file.name : 'Haz clic para seleccionar un archivo'}
             </p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-wayuu-brown/60 mt-1">
               PNG, JPG o PDF (máx. 5MB)
             </p>
           </label>
         </div>
       </div>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1" disabled={loading}>

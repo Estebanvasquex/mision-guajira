@@ -25,17 +25,19 @@ export default function OrderForm() {
     <div className="card">
       {/* Progress Bar */}
       <div className="mb-8">
-        <div className="flex justify-between mb-2">
+        <div className="flex justify-between mb-2 gap-1">
           {[1, 2, 3, 4, 5].map(step => (
             <div
               key={step}
-              className={`w-full h-2 mx-1 rounded ${
-                step <= currentStep ? 'bg-blue-600' : 'bg-gray-200'
+              className={`w-full h-3 rounded-full transition-all ${
+                step <= currentStep 
+                  ? 'bg-gradient-to-r from-wayuu-orange to-wayuu-red shadow-sm' 
+                  : 'bg-gray-200'
               }`}
             />
           ))}
         </div>
-        <p className="text-sm text-gray-600 text-center">
+        <p className="text-sm text-wayuu-brown font-medium text-center mt-3">
           Paso {currentStep} de 5
         </p>
       </div>

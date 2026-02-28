@@ -25,7 +25,7 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-4">
         Selecciona el Estilo del Cuadro
       </h2>
 
@@ -39,23 +39,23 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
             }}
             className={`cursor-pointer border-4 rounded-lg overflow-hidden transition-all ${
               data.frameStyle === frame.id
-                ? 'border-blue-600 shadow-lg'
-                : 'border-gray-200 hover:border-gray-400'
+                ? 'border-wayuu-orange shadow-lg ring-2 ring-wayuu-yellow'
+                : 'border-gray-200 hover:border-wayuu-orange/50'
             }`}
           >
-            <div className="relative h-48 bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">
+            <div className="relative h-48 bg-gradient-to-br from-wayuu-sand to-orange-50 flex items-center justify-center">
+              <span className="text-wayuu-brown/50 text-sm">
                 Imagen de ejemplo {frame.id}
               </span>
             </div>
             <div className="p-3 bg-white">
-              <p className="font-semibold text-center">{frame.name}</p>
+              <p className="font-semibold text-center text-wayuu-brown">{frame.name}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1">

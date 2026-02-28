@@ -45,10 +45,10 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-2">
           Elige los Colores
         </h2>
-        <p className="text-gray-600 text-sm">
+        <p className="text-wayuu-brown text-sm">
           Selecciona 2 o 3 colores para tu cuadro ({selectedColors.length}/3)
         </p>
       </div>
@@ -64,17 +64,17 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
               onClick={() => toggleColor(color.hex)}
               className={`cursor-pointer border-4 rounded-lg p-4 transition-all ${
                 isSelected
-                  ? 'border-blue-600 shadow-lg'
-                  : 'border-gray-200 hover:border-gray-400'
+                  ? 'border-wayuu-orange shadow-lg ring-2 ring-wayuu-yellow'
+                  : 'border-gray-200 hover:border-wayuu-orange/50'
               }`}
             >
               <div
-                className="w-full h-20 rounded-md mb-2 border border-gray-300"
+                className="w-full h-20 rounded-md mb-2 border-2 border-wayuu-brown/20 shadow-sm"
                 style={{ backgroundColor: color.hex }}
               />
-              <p className="text-sm font-medium text-center">{color.name}</p>
+              <p className="text-sm font-medium text-center text-wayuu-brown">{color.name}</p>
               {isSelected && (
-                <p className="text-xs text-blue-600 text-center mt-1">
+                <p className="text-xs text-wayuu-orange text-center mt-1 font-bold">
                   Color {position}
                 </p>
               )}
@@ -83,7 +83,7 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
         })}
       </div>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1">
