@@ -1,8 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { prisma } from '@/lib/prisma';
+
+async function checkAuth() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get('admin-session');
+  return session?.value === 'authenticated';
+}
 
 export async function GET(request: NextRequest) {
   try {
+    const isAuthenticated = await checkAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json(
+        { success: false, error: 'No autorizado' },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
     
@@ -23,6 +38,14 @@ export async function GET(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
+    const isAuthenticated = await checkAuth();
+    if (!isAuthenticated) {
+      return NextResponse.json(
+        { success: false, error: 'No autorizado' },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
     const { orderId, status } = body;
 
