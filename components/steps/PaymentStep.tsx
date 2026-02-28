@@ -80,12 +80,12 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
   if (success) {
     return (
       <div className="text-center space-y-6 py-8">
-        <div className="w-20 h-20 bg-gradient-to-br from-wayuu-green to-wayuu-blue rounded-full flex items-center justify-center mx-auto shadow-lg">
+        <div className="w-20 h-20 bg-gradient-to-r from-wayuu-orange to-wayuu-red rounded-full flex items-center justify-center mx-auto shadow-lg">
           <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-green to-wayuu-blue bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent">
           ¡Pedido Recibido!
         </h2>
         <p className="text-wayuu-brown">
