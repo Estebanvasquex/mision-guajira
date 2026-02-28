@@ -20,6 +20,7 @@ model Order {
   verse           String?  // versículo predefinido o null
   customMessage   String?  // mensaje personalizado
   paymentProof    String?  // URL del comprobante
+  status          String   @default("pending") // "pending", "confirmed", "completed", "cancelled"
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
