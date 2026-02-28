@@ -69,30 +69,36 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
           ¿Cómo deseas recibir tu cuadro? *
         </label>
         <div className="space-y-3">
-          <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-            <input
-              type="radio"
-              name="delivery"
-              checked={data.deliveryMethod === 'pickup'}
-              onChange={() => onUpdate({ deliveryMethod: 'pickup', address: undefined })}
-              className="w-5 h-5 text-blue-600"
-            />
-            <span className="ml-3 text-gray-900 font-medium">
-              Recoger en punto de encuentro
-            </span>
+          <label className="flex items-center justify-between p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+            <div className="flex items-center">
+              <input
+                type="radio"
+                name="delivery"
+                checked={data.deliveryMethod === 'pickup'}
+                onChange={() => onUpdate({ deliveryMethod: 'pickup', address: undefined })}
+                className="w-5 h-5 text-blue-600"
+              />
+              <span className="ml-3 text-gray-900 font-medium">
+                Recoger en punto de encuentro
+              </span>
+            </div>
+            <span className="text-green-600 font-semibold">Gratis</span>
           </label>
           
-          <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-            <input
-              type="radio"
-              name="delivery"
-              checked={data.deliveryMethod === 'delivery'}
-              onChange={() => onUpdate({ deliveryMethod: 'delivery' })}
-              className="w-5 h-5 text-blue-600"
-            />
-            <span className="ml-3 text-gray-900 font-medium">
-              Envío a domicilio
-            </span>
+          <label className="flex items-center justify-between p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+            <div className="flex items-center">
+              <input
+                type="radio"
+                name="delivery"
+                checked={data.deliveryMethod === 'delivery'}
+                onChange={() => onUpdate({ deliveryMethod: 'delivery' })}
+                className="w-5 h-5 text-blue-600"
+              />
+              <span className="ml-3 text-gray-900 font-medium">
+                Envío a domicilio
+              </span>
+            </div>
+            <span className="text-blue-600 font-semibold">+$10.000</span>
           </label>
         </div>
       </div>

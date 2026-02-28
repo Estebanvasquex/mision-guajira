@@ -15,6 +15,21 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
+  // Calcular el total
+  const FRAME_PRICE = 20000;
+  const DELIVERY_COST = 10000;
+  const total = data.deliveryMethod === 'delivery' 
+    ? FRAME_PRICE + DELIVERY_COST 
+    : FRAME_PRICE;
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0,
+    }).format(price);
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -100,11 +115,32 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
           Realiza tu transferencia a:
         </p>
         <ul className="text-sm text-blue-800 space-y-1">
-          <li>Banco: [Nombre del Banco]</li>
-          <li>Cuenta: [Número de Cuenta]</li>
-          <li>Titular: [Nombre del Titular]</li>
-          <li>Valor: $[Precio]</li>
+          <li>Banco: Bancolombia</li>
+          <li>Cuenta: 00861713547</li>
+          <li>Titular: Vanessa Henao Zuluaga</li>
         </ul>
+      </div>
+
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <h3 className="font-semibold text-gray-900 mb-3">Resumen del Pedido</h3>
+        <div className="space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span className="text-gray-600">Cuadro personalizado</span>
+            <span className="text-gray-900 font-medium">{formatPrice(20000)}</span>
+          </div>
+          {data.deliveryMethod === 'delivery' && (
+            <div className="flex justify-between">
+              <span className="text-gray-600">Envío a domicilio</span>
+              <span className="text-gray-900 font-medium">{formatPrice(10000)}</span>
+            </div>
+          )}
+          <div className="border-t border-gray-300 pt-2 mt-2">
+            <div className="flex justify-between">
+              <span className="text-gray-900 font-bold">Total a pagar</span>
+              <span className="text-blue-600 font-bold text-lg">{formatPrice(total)}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div>
