@@ -141,6 +141,15 @@ export default function PaymentStep({ data, onUpdate, onBack }: Props) {
             </div>
           </div>
         </div>
+        
+        <div className="mt-4 pt-4 border-t-2 border-wayuu-yellow/30">
+          <p className="text-sm text-wayuu-brown text-center font-medium">
+             ¿Te gustaría bendecir un poco más? 
+          </p>
+          <p className="text-xs text-wayuu-brown/70 text-center mt-1">
+            Cada aporte adicional multiplica el impacto de nuestra misión
+          </p>
+        </div>
       </div>
 
       <div>
