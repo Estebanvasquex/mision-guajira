@@ -1,20 +1,39 @@
 export const FRAME_STYLES = [
-  { id: 1, name: 'Estilo Clásico', image: '/frames/frame1.jpeg', allowColors: true },
-  { id: 2, name: 'Estilo Cute', image: '/frames/frame2.jpeg', allowColors: false },
-  { id: 3, name: 'Estilo Minimalista', image: '/frames/frame3.jpeg', allowColors: true },
-  { id: 4, name: 'Estilo Contemporáneo', image: '/frames/frame4.jpeg', allowColors: false },
-  { id: 5, name: 'Estilo Fotográfico', image: '/frames/frame5.jpeg', allowColors: false },
+  { id: 1, name: 'Estilo Clásico 20X20 cm', image: '/frames/frame1.jpeg', allowColors: true },
+  { id: 2, name: 'Estilo Cute 20X20 cm', image: '/frames/frame2.jpeg', allowColors: false },
+  { id: 3, name: 'Estilo Minimalista 20X20 cm', image: '/frames/frame3.jpeg', allowColors: true },
+  { id: 4, name: 'Estilo Contemporáneo 20X20 cm', image: '/frames/frame4.jpeg', allowColors: false },
+  { id: 5, name: 'Estilo Fotográfico 20X20 cm', image: '/frames/frame5.jpeg', allowColors: false },
 ];
 
 export const COLOR_PALETTE = [
-  { name: 'Azul Cielo', hex: '#87CEEB' },
-  { name: 'Verde Esperanza', hex: '#90EE90' },
-  { name: 'Rosa Amor', hex: '#FFB6C1' },
-  { name: 'Dorado', hex: '#FFD700' },
-  { name: 'Blanco Puro', hex: '#FFFFFF' },
-  { name: 'Beige', hex: '#F5F5DC' },
-  { name: 'Coral', hex: '#FF7F50' },
-  { name: 'Lavanda', hex: '#E6E6FA' },
+  // Oscuros
+  { name: 'Negro', hex: '#000000' },
+  { name: 'Azul Grisáceo Oscuro', hex: '#494f68' },
+  { name: 'Verde Petróleo Oscuro', hex: '#325054' },
+  { name: 'Gris Carbón', hex: '#494943' },
+  { name: 'Marrón Café', hex: '#593d1c' },
+
+  // Claros
+  { name: 'Amarillo Crema', hex: '#f6db8a' },
+  { name: 'Verde Menta Pálido', hex: '#b9deda' },
+  { name: 'Lavanda Claro', hex: '#cbc6e4' },
+  { name: 'Azul Cielo Claro', hex: '#a9d6f0' },
+  { name: 'Rosa Viejo Claro', hex: '#d5b4c5' },
+
+  // Medios
+  { name: 'Turquesa Medio', hex: '#61c0be' },
+  { name: 'Salmón / Coral', hex: '#f09265' },
+  { name: 'Azul Denim', hex: '#6a84c2' },
+  { name: 'Verde Hoja', hex: '#69b762' },
+  { name: 'Azul Cian', hex: '#55c2e5' },
+
+  // Vibrantes
+  { name: 'Magenta / Fucsia', hex: '#e71d73' },
+  { name: 'Verde Lima', hex: '#95c11f' },
+  { name: 'Naranja Intenso', hex: '#e94e1b' },
+  { name: 'Amarillo Vibrante', hex: '#fcea10' },
+  { name: 'Aguamarina', hex: '#69c3c7' }
 ];
 
 export const BIBLE_VERSES = [

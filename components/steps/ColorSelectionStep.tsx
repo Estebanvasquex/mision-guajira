@@ -12,32 +12,24 @@ interface Props {
 }
 
 export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: Props) {
-  const [selectedColors, setSelectedColors] = useState<string[]>([
-    data.color1 || '',
-    data.color2 || '',
-    data.color3 || '',
-  ].filter(Boolean));
+  const [selectedColor, setSelectedColor] = useState<string>(data.color1 || '');
   const [error, setError] = useState('');
 
-  const toggleColor = (hex: string) => {
-    if (selectedColors.includes(hex)) {
-      setSelectedColors(selectedColors.filter(c => c !== hex));
-    } else if (selectedColors.length < 3) {
-      setSelectedColors([...selectedColors, hex]);
-    }
+  const selectColor = (hex: string) => {
+    setSelectedColor(hex);
     setError('');
   };
 
   const handleSubmit = () => {
-    if (selectedColors.length < 2) {
-      setError('Selecciona al menos 2 colores');
+    if (!selectedColor) {
+      setError('Selecciona un color');
       return;
     }
     
     onUpdate({
-      color1: selectedColors[0],
-      color2: selectedColors[1],
-      color3: selectedColors[2] || undefined,
+      color1: selectedColor,
+      color2: undefined,
+      color3: undefined,
     });
     onNext();
   };
@@ -46,22 +38,21 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-2">
-          Elige los Colores
+          Elige el Color
         </h2>
         <p className="text-wayuu-brown text-sm">
-          Selecciona 2 o 3 colores para tu cuadro ({selectedColors.length}/3)
+          Selecciona el color de fondo de tu cuadro
         </p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {COLOR_PALETTE.map(color => {
-          const isSelected = selectedColors.includes(color.hex);
-          const position = selectedColors.indexOf(color.hex) + 1;
+          const isSelected = selectedColor === color.hex;
           
           return (
             <div
               key={color.hex}
-              onClick={() => toggleColor(color.hex)}
+              onClick={() => selectColor(color.hex)}
               className={`cursor-pointer border-4 rounded-lg p-4 transition-all ${
                 isSelected
                   ? 'border-wayuu-orange shadow-lg ring-2 ring-wayuu-yellow'
@@ -75,7 +66,7 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
               <p className="text-sm font-medium text-center text-wayuu-brown">{color.name}</p>
               {isSelected && (
                 <p className="text-xs text-wayuu-orange text-center mt-1 font-bold">
-                  Color {position}
+                  ✓ Seleccionado
                 </p>
               )}
             </div>
