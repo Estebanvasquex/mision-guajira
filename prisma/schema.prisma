@@ -14,9 +14,7 @@ model Order {
   deliveryMethod  String   // "pickup" o "delivery"
   address         String?
   frameStyle      Int      // 1-5 (índice de imagen)
-  color1          String
-  color2          String
-  color3          String?
+  color           String?  // Color único opcional
   verse           String?  // versículo predefinido o null
   customMessage   String?  // mensaje personalizado
   paymentProof    String?  // URL del comprobante

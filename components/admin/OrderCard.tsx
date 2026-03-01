@@ -10,9 +10,7 @@ interface Order {
   deliveryMethod: string;
   address?: string;
   frameStyle: number;
-  color1: string;
-  color2: string;
-  color3?: string;
+  color?: string;
   verse?: string;
   customMessage?: string;
   paymentProof?: string;
@@ -107,30 +105,21 @@ export default function OrderCard({ order, onUpdateStatus }: Props) {
             </div>
           )}
 
-          {/* Frame & Colors */}
+          {/* Frame & Color */}
           <div>
             <p className="text-sm font-semibold text-wayuu-brown mb-2">Diseño del cuadro:</p>
             <div className="flex items-center gap-3">
               <span className="text-sm text-wayuu-brown/80">{frameStyle?.name}</span>
-              <div className="flex gap-2">
-                <div 
-                  className="w-8 h-8 rounded border-2 border-wayuu-brown/20" 
-                  style={{ backgroundColor: order.color1 }}
-                  title="Color 1"
-                />
-                <div 
-                  className="w-8 h-8 rounded border-2 border-wayuu-brown/20" 
-                  style={{ backgroundColor: order.color2 }}
-                  title="Color 2"
-                />
-                {order.color3 && (
+              {order.color && (
+                <div className="flex gap-2 items-center">
+                  <span className="text-xs text-wayuu-brown/60">Color:</span>
                   <div 
-                    className="w-8 h-8 rounded border-2 border-wayuu-brown/20" 
-                    style={{ backgroundColor: order.color3 }}
-                    title="Color 3"
+                    className="w-8 h-8 rounded border-2 border-wayuu-brown/20 shadow-sm" 
+                    style={{ backgroundColor: order.color }}
+                    title="Color seleccionado"
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
 

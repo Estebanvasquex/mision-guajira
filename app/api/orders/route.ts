@@ -10,14 +10,12 @@ export async function POST(request: NextRequest) {
         name: body.name,
         phone: body.phone,
         deliveryMethod: body.deliveryMethod,
-        address: body.address,
+        address: body.address || null,
         frameStyle: body.frameStyle,
-        color1: body.color1,
-        color2: body.color2,
-        color3: body.color3,
-        verse: body.verse,
-        customMessage: body.customMessage,
-        paymentProof: body.paymentProof,
+        color: body.color1 || null,  // Usar solo color1 como el color único
+        verse: body.verse || null,
+        customMessage: body.customMessage || null,
+        paymentProof: body.paymentProof || null,
       },
     });
 

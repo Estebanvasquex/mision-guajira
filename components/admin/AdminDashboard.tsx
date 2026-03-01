@@ -10,9 +10,7 @@ interface Order {
   deliveryMethod: string;
   address?: string;
   frameStyle: number;
-  color1: string;
-  color2: string;
-  color3?: string;
+  color?: string;
   verse?: string;
   customMessage?: string;
   paymentProof?: string;
