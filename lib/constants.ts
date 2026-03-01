@@ -16,24 +16,17 @@ export const COLOR_PALETTE = [
 
   // Claros
   { name: 'Amarillo Crema', hex: '#f6db8a' },
-  { name: 'Verde Menta Pálido', hex: '#b9deda' },
-  { name: 'Lavanda Claro', hex: '#cbc6e4' },
-  { name: 'Azul Cielo Claro', hex: '#a9d6f0' },
-  { name: 'Rosa Viejo Claro', hex: '#d5b4c5' },
+
 
   // Medios
-  { name: 'Turquesa Medio', hex: '#61c0be' },
+
   { name: 'Salmón / Coral', hex: '#f09265' },
   { name: 'Azul Denim', hex: '#6a84c2' },
   { name: 'Verde Hoja', hex: '#69b762' },
   { name: 'Azul Cian', hex: '#55c2e5' },
 
   // Vibrantes
-  { name: 'Magenta / Fucsia', hex: '#e71d73' },
-  { name: 'Verde Lima', hex: '#95c11f' },
-  { name: 'Naranja Intenso', hex: '#e94e1b' },
-  { name: 'Amarillo Vibrante', hex: '#fcea10' },
-  { name: 'Aguamarina', hex: '#69c3c7' }
+  { name: 'Magenta / Fucsia', hex: '#e71d73' }
 ];
 
 export const BIBLE_VERSES = [
