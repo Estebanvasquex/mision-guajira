@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { OrderFormData } from '@/lib/types';
+import { FRAME_STYLES } from '@/lib/constants';
 import PersonalInfoStep from './steps/PersonalInfoStep';
 import FrameSelectionStep from './steps/FrameSelectionStep';
 import ColorSelectionStep from './steps/ColorSelectionStep';
@@ -20,6 +21,30 @@ export default function OrderForm() {
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 5));
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
+
+  // Verificar si el estilo seleccionado permite colores
+  const selectedFrame = FRAME_STYLES.find(f => f.id === formData.frameStyle);
+  const shouldShowColorStep = selectedFrame?.allowColors ?? false;
+
+  // Función para avanzar desde el paso 2 (selección de cuadro)
+  const nextFromFrameStep = () => {
+    if (shouldShowColorStep) {
+      setCurrentStep(3); // Ir a selección de colores
+    } else {
+      // Limpiar colores si no se permiten
+      setFormData(prev => ({ ...prev, color1: undefined, color2: undefined, color3: undefined }));
+      setCurrentStep(4); // Saltar a mensaje
+    }
+  };
+
+  // Función para retroceder desde el paso 4 (mensaje)
+  const backFromMessageStep = () => {
+    if (shouldShowColorStep) {
+      setCurrentStep(3); // Volver a colores
+    } else {
+      setCurrentStep(2); // Volver a selección de cuadro
+    }
+  };
 
   return (
     <div className="card">
@@ -54,11 +79,11 @@ export default function OrderForm() {
         <FrameSelectionStep
           data={formData}
           onUpdate={updateFormData}
-          onNext={nextStep}
+          onNext={nextFromFrameStep}
           onBack={prevStep}
         />
       )}
-      {currentStep === 3 && (
+      {currentStep === 3 && shouldShowColorStep && (
         <ColorSelectionStep
           data={formData}
           onUpdate={updateFormData}
@@ -71,7 +96,7 @@ export default function OrderForm() {
           data={formData}
           onUpdate={updateFormData}
           onNext={nextStep}
-          onBack={prevStep}
+          onBack={backFromMessageStep}
         />
       )}
       {currentStep === 5 && (
