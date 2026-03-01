@@ -30,12 +30,12 @@ export const COLOR_PALETTE = [
 ];
 
 export const BIBLE_VERSES = [
-  'Juan 3:16 - Porque de tal manera amó Dios al mundo...',
-  'Filipenses 4:13 - Todo lo puedo en Cristo que me fortalece',
-  'Salmos 23:1 - Jehová es mi pastor, nada me faltará',
-  'Proverbios 3:5-6 - Confía en Jehová de todo tu corazón',
-  'Jeremías 29:11 - Yo sé los planes que tengo para ustedes',
-  'Mateo 28:20 - Yo estoy con ustedes todos los días',
-  'Romanos 8:28 - A los que aman a Dios, todas las cosas les ayudan',
-  'Isaías 41:10 - No temas, porque yo estoy contigo',
+  'Juan 3:16: Dios amó tanto al mundo que dio a su Hijo para darnos vida eterna.',
+  'Filipenses 4:13: Puedo enfrentar cualquier reto porque Cristo me da su fuerza.',
+  'Salmos 23:1: El Señor es mi guía y mi pastor; nada me faltará.',
+  'Proverbios 3:5-6: Confía en el Señor totalmente y no solo en tu propia inteligencia.',
+  'Jeremías 29:11: Mis planes para ti son de bienestar y para darte un gran futuro.',
+  'Mateo 28:20: Estaré a tu lado cada día, sin falta, hasta el fin del mundo.',
+  'Romanos 8:28: A los que aman a Dios, todo lo que les pasa les ayuda para bien.',
+  'Isaías 41:10: No temas ni te angusties, yo estoy contigo y te doy fuerzas.',
 ];
