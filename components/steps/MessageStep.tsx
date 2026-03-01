@@ -36,15 +36,15 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-4">
+      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-light mb-4">
         Mensaje del Cuadro
       </h2>
 
       <div className="space-y-3">
-        <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+        <label className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
           !useCustomMessage 
-            ? 'border-wayuu-orange bg-[#fff7ed]' 
-            : 'border-gray-300 hover:border-wayuu-orange/50 hover:bg-gray-50'
+            ? 'border-primary bg-accent' 
+            : 'border-primary/20 hover:border-primary/50 hover:bg-accent/50'
         }`}>
           <input
             type="radio"
@@ -54,17 +54,17 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
               onUpdate({ customMessage: undefined });
               setError('');
             }}
-            className="w-5 h-5 text-wayuu-purple accent-wayuu-purple"
+            className="w-5 h-5 text-primary accent-primary"
           />
-          <span className="ml-3 text-wayuu-brown font-medium">
+          <span className="ml-3 text-primary-light font-medium">
             Elegir un versículo bíblico
           </span>
         </label>
 
-        <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+        <label className={`flex items-center p-4 border rounded-lg cursor-pointer transition-all ${
           useCustomMessage 
-            ? 'border-wayuu-orange bg-[#fff7ed]' 
-            : 'border-gray-300 hover:border-wayuu-orange/50 hover:bg-gray-50'
+            ? 'border-primary bg-accent' 
+            : 'border-primary/20 hover:border-primary/50 hover:bg-accent/50'
         }`}>
           <input
             type="radio"
@@ -74,9 +74,9 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
               onUpdate({ verse: undefined });
               setError('');
             }}
-            className="w-5 h-5 text-wayuu-blue accent-wayuu-blue"
+            className="w-5 h-5 text-primary accent-primary"
           />
-          <span className="ml-3 text-wayuu-brown font-medium">
+          <span className="ml-3 text-primary-light font-medium">
             Escribir mensaje personalizado
           </span>
         </label>
@@ -84,16 +84,16 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
 
       {!useCustomMessage ? (
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-wayuu-brown mb-2">
+          <label className="block text-sm font-medium text-primary-dark mb-2">
             Selecciona un versículo
           </label>
           {BIBLE_VERSES.map((verse, index) => (
             <label
               key={index}
-              className={`block p-4 border-2 rounded-lg cursor-pointer transition-all ${
+              className={`block p-4 border rounded-lg cursor-pointer transition-all ${
                 data.verse === verse 
-                  ? 'border-wayuu-orange bg-[#fff7ed] shadow-sm' 
-                  : 'border-gray-200 hover:border-wayuu-orange/50 hover:bg-gray-50'
+                  ? 'border-primary bg-accent shadow-sm' 
+                  : 'border-primary/20 hover:border-primary/50 hover:bg-accent/50'
               }`}
             >
               <input
@@ -106,13 +106,13 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
                 }}
                 className="sr-only"
               />
-              <p className="text-sm text-wayuu-brown">{verse}</p>
+              <p className="text-sm text-primary-light">{verse}</p>
             </label>
           ))}
         </div>
       ) : (
         <div>
-          <label className="block text-sm font-medium text-wayuu-brown mb-2">
+          <label className="block text-sm font-medium text-primary-dark mb-2">
             Tu mensaje personalizado (máx. 100 caracteres)
           </label>
           <textarea
@@ -126,13 +126,13 @@ export default function MessageStep({ data, onUpdate, onNext, onBack }: Props) {
             }}
             placeholder="Escribe tu mensaje aquí..."
           />
-          <p className="text-sm text-wayuu-brown/60 mt-1 text-right">
+          <p className="text-sm text-primary-dark/60 mt-1 text-right">
             {data.customMessage?.length || 0}/100
           </p>
         </div>
       )}
 
-      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
+      {error && <p className="text-red-600 text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1">

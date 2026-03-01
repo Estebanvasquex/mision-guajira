@@ -114,7 +114,7 @@ export default function OrderCard({ order, onUpdateStatus }: Props) {
                 <div className="flex gap-2 items-center">
                   <span className="text-xs text-wayuu-brown/60">Color:</span>
                   <div 
-                    className="w-8 h-8 rounded border-2 border-wayuu-brown/20 shadow-sm" 
+                    className="w-8 h-8 rounded border border-wayuu-brown/20 shadow-sm" 
                     style={{ backgroundColor: order.color }}
                     title="Color seleccionado"
                   />
@@ -146,7 +146,7 @@ export default function OrderCard({ order, onUpdateStatus }: Props) {
                   <img 
                     src={order.paymentProof} 
                     alt="Comprobante de pago" 
-                    className="max-w-full h-auto rounded-lg border-2 border-wayuu-orange/30"
+                    className="max-w-full h-auto rounded-lg border border-wayuu-orange/30"
                   />
                 </div>
               )}
@@ -165,7 +165,7 @@ export default function OrderCard({ order, onUpdateStatus }: Props) {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     order.status === status
                       ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                      : 'bg-white border-2 border-wayuu-orange text-wayuu-brown hover:bg-wayuu-sand'
+                      : 'bg-white border border-wayuu-orange text-wayuu-brown hover:bg-wayuu-sand'
                   }`}
                 >
                   {getStatusLabel(status)}

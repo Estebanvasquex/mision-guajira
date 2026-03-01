@@ -32,12 +32,12 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-4">
+      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-light mb-4">
         Información Personal
       </h2>
 
       <div>
-        <label className="block text-sm font-medium text-wayuu-brown mb-2">
+        <label className="block text-sm font-medium text-primary-dark mb-2">
           Nombre completo *
         </label>
         <input
@@ -47,11 +47,11 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
           onChange={e => onUpdate({ name: e.target.value })}
           placeholder="Tu nombre"
         />
-        {errors.name && <p className="text-wayuu-red text-sm mt-1">{errors.name}</p>}
+        {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-wayuu-brown mb-2">
+        <label className="block text-sm font-medium text-primary-dark mb-2">
           Celular *
         </label>
         <input
@@ -61,18 +61,18 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
           onChange={e => onUpdate({ phone: e.target.value })}
           placeholder="300 123 4567"
         />
-        {errors.phone && <p className="text-wayuu-red text-sm mt-1">{errors.phone}</p>}
+        {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-wayuu-brown mb-3">
+        <label className="block text-sm font-medium text-primary-dark mb-3">
           ¿Cómo deseas recibir tu cuadro? *
         </label>
         <div className="space-y-3">
-          <label className={`flex items-center justify-between p-4 border-2 rounded-lg cursor-pointer transition-all ${
+          <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${
             data.deliveryMethod === 'pickup' 
-              ? 'border-wayuu-green bg-green-50' 
-              : 'border-gray-300 hover:border-wayuu-green/50 hover:bg-gray-50'
+              ? 'border-primary bg-accent' 
+              : 'border-primary/20 hover:border-primary/50 hover:bg-accent/50'
           }`}>
             <div className="flex items-center">
               <input
@@ -80,19 +80,19 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
                 name="delivery"
                 checked={data.deliveryMethod === 'pickup'}
                 onChange={() => onUpdate({ deliveryMethod: 'pickup', address: undefined })}
-                className="w-5 h-5 text-wayuu-green accent-wayuu-green"
+                className="w-5 h-5 text-primary accent-primary"
               />
-              <span className="ml-3 text-wayuu-brown font-medium">
+              <span className="ml-3 text-primary-light font-medium">
                 Recoger en punto de encuentro
               </span>
             </div>
-            <span className="text-wayuu-green font-bold">Gratis</span>
+            <span className="text-primary font-bold">Gratis</span>
           </label>
           
-          <label className={`flex items-center justify-between p-4 border-2 rounded-lg cursor-pointer transition-all ${
+          <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${
             data.deliveryMethod === 'delivery' 
-              ? 'border-wayuu-orange bg-orange-50' 
-              : 'border-gray-300 hover:border-wayuu-orange/50 hover:bg-gray-50'
+              ? 'border-primary bg-accent' 
+              : 'border-primary/20 hover:border-primary/50 hover:bg-accent/50'
           }`}>
             <div className="flex items-center">
               <input
@@ -100,20 +100,20 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
                 name="delivery"
                 checked={data.deliveryMethod === 'delivery'}
                 onChange={() => onUpdate({ deliveryMethod: 'delivery' })}
-                className="w-5 h-5 text-wayuu-orange accent-wayuu-orange"
+                className="w-5 h-5 text-primary accent-primary"
               />
-              <span className="ml-3 text-wayuu-brown font-medium">
+              <span className="ml-3 text-primary-light font-medium">
                 Envío a domicilio
               </span>
             </div>
-            <span className="text-wayuu-orange font-bold">+$10.000</span>
+            <span className="text-primary font-bold">+$10.000</span>
           </label>
         </div>
       </div>
 
       {data.deliveryMethod === 'delivery' && (
         <div>
-          <label className="block text-sm font-medium text-wayuu-brown mb-2">
+          <label className="block text-sm font-medium text-primary-dark mb-2">
             Dirección de envío *
           </label>
           <textarea
@@ -123,7 +123,7 @@ export default function PersonalInfoStep({ data, onUpdate, onNext }: Props) {
             onChange={e => onUpdate({ address: e.target.value })}
             placeholder="Calle, número, barrio, ciudad"
           />
-          {errors.address && <p className="text-wayuu-red text-sm mt-1">{errors.address}</p>}
+          {errors.address && <p className="text-red-600 text-sm mt-1">{errors.address}</p>}
         </div>
       )}
 

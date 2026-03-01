@@ -54,15 +54,15 @@ export default function OrderForm() {
           {[1, 2, 3, 4, 5].map(step => (
             <div
               key={step}
-              className={`w-full h-3 rounded-full transition-all ${
+              className={`w-full h-2 rounded-full transition-all ${
                 step <= currentStep 
-                  ? 'bg-gradient-to-r from-wayuu-orange to-wayuu-red shadow-sm' 
+                  ? 'bg-primary' 
                   : 'bg-gray-200'
               }`}
             />
           ))}
         </div>
-        <p className="text-sm text-wayuu-brown font-medium text-center mt-3">
+        <p className="text-sm text-primary-dark font-medium text-center mt-3">
           Paso {currentStep} de 5
         </p>
       </div>

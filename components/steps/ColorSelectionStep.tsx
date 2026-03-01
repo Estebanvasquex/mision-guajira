@@ -37,10 +37,10 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-2">
+        <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-light mb-2">
           Elige el Color
         </h2>
-        <p className="text-wayuu-brown text-sm">
+        <p className="text-primary-dark text-sm">
           Selecciona el color de fondo de tu cuadro
         </p>
       </div>
@@ -53,19 +53,19 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
             <div
               key={color.hex}
               onClick={() => selectColor(color.hex)}
-              className={`cursor-pointer border-4 rounded-lg p-4 transition-all ${
+              className={`cursor-pointer border rounded-lg p-4 transition-all ${
                 isSelected
-                  ? 'border-wayuu-orange shadow-lg ring-2 ring-wayuu-yellow'
-                  : 'border-gray-200 hover:border-wayuu-orange/50'
+                  ? 'border-primary shadow-lg bg-accent'
+                  : 'border-primary/20 hover:border-primary/50'
               }`}
             >
               <div
-                className="w-full h-20 rounded-md mb-2 border-2 border-wayuu-brown/20 shadow-sm"
+                className="w-full h-20 rounded-md mb-2 border border-primary/20 shadow-sm"
                 style={{ backgroundColor: color.hex }}
               />
-              <p className="text-sm font-medium text-center text-wayuu-brown">{color.name}</p>
+              <p className="text-sm font-medium text-center text-primary-light">{color.name}</p>
               {isSelected && (
-                <p className="text-xs text-wayuu-orange text-center mt-1 font-bold">
+                <p className="text-xs text-primary text-center mt-1 font-bold">
                   ✓ Seleccionado
                 </p>
               )}
@@ -74,7 +74,7 @@ export default function ColorSelectionStep({ data, onUpdate, onNext, onBack }: P
         })}
       </div>
 
-      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
+      {error && <p className="text-red-600 text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1">

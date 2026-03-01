@@ -9,17 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        wayuu: {
-          red: '#D32F2F',      // Rojo vibrante
-          orange: '#FF6F00',   // Naranja intenso
-          yellow: '#FBC02D',   // Amarillo dorado
-          green: '#388E3C',    // Verde esmeralda
-          blue: '#1976D2',     // Azul cielo
-          purple: '#7B1FA2',   // Morado profundo
-          pink: '#C2185B',     // Rosa fucsia
-          brown: '#5D4037',    // Marrón tierra
-          sand: '#F5E6D3',     // Arena del desierto
+        // Nueva paleta terracota
+        primary: {
+          DEFAULT: '#C2703A',  // Terracota cálido
+          dark: '#8B4A2B',     // Terracota oscuro
+          light: '#3D2A1E',    // Marrón profundo
         },
+        accent: {
+          DEFAULT: '#F5EDE6',  // Crema natural
+          light: '#FDFBF9',    // Blanco cálido
+        },
+        // Mantener colores Wayuu para compatibilidad
+        wayuu: {
+          red: '#D32F2F',
+          orange: '#C2703A',   // Actualizado a terracota
+          yellow: '#FBC02D',
+          green: '#388E3C',
+          blue: '#1976D2',
+          purple: '#7B1FA2',
+          pink: '#C2185B',
+          brown: '#3D2A1E',    // Actualizado a marrón profundo
+          sand: '#F5EDE6',     // Actualizado a crema natural
+        },
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

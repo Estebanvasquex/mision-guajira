@@ -30,8 +30,8 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-wayuu-red to-wayuu-orange bg-clip-text text-transparent mb-4">
-        Selecciona el Estilo del Cuadro
+      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-light mb-4">
+        Selecciona el estilo del cuadro
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -42,13 +42,13 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
               onUpdate({ frameStyle: frame.id });
               setError('');
             }}
-            className={`cursor-pointer border-4 rounded-lg overflow-hidden transition-all ${
+            className={`cursor-pointer border rounded-lg overflow-hidden transition-all ${
               data.frameStyle === frame.id
-                ? 'border-wayuu-orange shadow-lg ring-2 ring-wayuu-yellow'
-                : 'border-gray-200 hover:border-wayuu-orange/50'
+                ? 'border-primary shadow-lg bg-accent'
+                : 'border-primary/20 hover:border-primary/50'
             }`}
           >
-            <div className="relative h-48 bg-gradient-to-br from-wayuu-sand to-orange-50">
+            <div className="relative h-48 bg-accent">
               {!imageErrors[frame.id] ? (
                 <Image
                   src={frame.image}
@@ -60,20 +60,20 @@ export default function FrameSelectionStep({ data, onUpdate, onNext, onBack }: P
                 />
               ) : (
                 <div className="flex items-center justify-center h-full">
-                  <span className="text-wayuu-brown/50 text-sm text-center px-4">
+                  <span className="text-primary-light/50 text-sm text-center px-4">
                     Imagen de ejemplo {frame.id}
                   </span>
                 </div>
               )}
             </div>
             <div className="p-3 bg-white">
-              <p className="font-semibold text-center text-wayuu-brown">{frame.name}</p>
+              <p className="font-semibold text-center text-primary-light">{frame.name}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {error && <p className="text-wayuu-red text-sm text-center font-medium">{error}</p>}
+      {error && <p className="text-red-600 text-sm text-center font-medium">{error}</p>}
 
       <div className="flex gap-3">
         <button onClick={onBack} className="btn-secondary flex-1">

@@ -121,8 +121,8 @@ export default function AdminDashboard() {
       {/* Orders List */}
       {loading ? (
         <div className="text-center py-12">
-          <div className="inline-block w-8 h-8 border-4 border-wayuu-orange border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-wayuu-brown mt-4">Cargando pedidos...</p>
+          <div className="inline-block w-8 h-8 border border-primary border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-primary-light mt-4">Cargando pedidos...</p>
         </div>
       ) : orders.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg shadow-sm">

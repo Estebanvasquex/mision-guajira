@@ -46,7 +46,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-8 h-8 border-4 border-wayuu-orange border-t-transparent rounded-full animate-spin"></div>
+          <div className="inline-block w-8 h-8 border border-wayuu-orange border-t-transparent rounded-full animate-spin"></div>
           <p className="text-wayuu-brown mt-4">Cargando...</p>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function AdminPage() {
           </div>
           <button
             onClick={handleLogout}
-            className="px-4 py-2 bg-white border-2 border-wayuu-red text-wayuu-red rounded-lg font-medium hover:bg-wayuu-red hover:text-white transition-colors"
+            className="px-4 py-2 bg-white border border-wayuu-red text-wayuu-red rounded-lg font-medium hover:bg-wayuu-red hover:text-white transition-colors"
           >
             Cerrar sesión
           </button>
